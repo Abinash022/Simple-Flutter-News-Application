@@ -19,6 +19,16 @@ class _NewsScreenState extends State<NewsScreen> {
           onPressed: () {},
           icon: const Icon(Icons.menu),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
       ),
       body: const NewsTile(),
     );

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:news_application_flutter/Models/news_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Constant/api_key.dart';
 
@@ -20,6 +21,14 @@ class ApiService {
           .toList();
     } else {
       throw Exception('Failed to load album');
+    }
+  }
+
+  // URl Launcher for the web view of the news
+
+  Future<void> launchURL(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Cannot Launch the $url');
     }
   }
 }
