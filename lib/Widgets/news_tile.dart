@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../Riverpod/news_controller.dart';
 
 class NewsTile extends ConsumerWidget {
@@ -28,22 +26,28 @@ class NewsTile extends ConsumerWidget {
                 urlLauncher.launchURL(
                   Uri.parse(article.url ?? ''),
                 );
-                // launchUrl(
-                //   Uri.parse(article.url ?? ''),
-                // );
               },
               title: Text(
                 article.title ?? '',
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 15.0),
               ),
-              // subtitle: Text(article.description ?? ''),
               leading: article.urlToImage != null
                   ? Image.network(
                       article.urlToImage!,
-                      // Adjust the fit as needed
+                      fit: BoxFit.cover,
+                      height: 250.0,
+                      width: 100.0,
                     )
-                  : const Placeholder(
-                      // Use a Placeholder widget as a placeholder image
-                      child: Text('Sorry'),
+                  : Container(
+                      height: 250.0,
+                      width: 100.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                'https://cdn.pixabay.com/photo/2016/02/01/00/56/news-1172463_640.jpg'),
+                            fit: BoxFit.cover),
+                      ),
                     ),
             );
           },
